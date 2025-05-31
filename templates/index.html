@@ -135,41 +135,42 @@
     </div>
   </div>
 
-  <script>
-    function toggleChat() {
-      const chat = document.getElementById("chat-box");
-      chat.style.display = (chat.style.display === "flex") ? "none" : "flex";
+ <script>
+  function toggleChat() {
+    const chat = document.getElementById("chat-box");
+    chat.style.display = (chat.style.display === "flex") ? "none" : "flex";
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("chat-input");
+    const message = input.value.trim();
+    if (!message) return;
+
+    document.getElementById("chat-output").innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
+    input.value = "";
+
+    fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message })
+    })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("chat-output").innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+      document.getElementById("chat-output").scrollTop = document.getElementById("chat-output").scrollHeight;
+    })
+    .catch(err => {
+      document.getElementById("chat-output").innerHTML += `<p><strong>Bot:</strong> Erro ao conectar com o servidor.</p>`;
+    });
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      sendMessage();
     }
+  }
+</script>
 
-    function sendMessage() {
-      const input = document.getElementById("chat-input");
-      const message = input.value.trim();
-      if (!message) return;
-
-      document.getElementById("chat-output").innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
-      input.value = "";
-
-      fetch("https://paraiso-patinas.onrender.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
-      })
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("chat-output").innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
-        document.getElementById("chat-output").scrollTop = document.getElementById("chat-output").scrollHeight;
-      })
-      .catch(err => {
-        document.getElementById("chat-output").innerHTML += `<p><strong>Bot:</strong> Erro ao conectar com o servidor.</p>`;
-      });
-    }
-
-    function handleKeyPress(e) {
-      if (e.key === "Enter") {
-        sendMessage();
-      }
-    }
-  </script>
 
 </body>
 </html>
