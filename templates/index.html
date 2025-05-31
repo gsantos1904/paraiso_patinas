@@ -149,7 +149,7 @@
       document.getElementById("chat-output").innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
       input.value = "";
 
-      fetch("https://paraiso-patinhas.onrender.com", {
+      fetch("https://paraiso-patinas.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
