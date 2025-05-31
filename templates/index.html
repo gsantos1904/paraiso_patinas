@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="../img/Logo-removebg-preview__1_-removebg-preview.png" />
+  <link rel="stylesheet" href="../static/style.css" />
+  <title>PARAÍSO PATINHAS</title>
+</head>
+<body>
+
+  <!-- header -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="../img/Logo-removebg-preview__1_-removebg-preview.png" alt="Logo Paraíso Patinhas" />
+      </a>
+      <h1><a href="index.html">PARAÍSO PATINHAS</a></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#principal">Conheça-nos</a></li>
+        <li><a href="#caixa_button">Faça-Download</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--div principal -->
+  <div id="principal" class="principal">
+    <div class="conteudo">
+      <h1>Conheça o <span>"PARAÍSO PATINHAS"</span></h1>
+      <p>
+        Seja bem-vindo ao Paraíso Patinhas! Somos uma organização dedicada ao resgate, cuidado e adoção responsável de animais abandonados...
+      </p>
+    </div>
+
+    <div class="caixa">
+      <div class="caixa_display">
+        <div class="caixa_texto">
+          <p>Quer adotar um novo amigo? No Paraíso Patinhas, facilitamos o processo para você...</p>
+        </div>
+        <div id="caixa_button" class="caixa_button">
+          <a href="https://drive.google.com/drive/folders/1_sKsSDinLePKQOX8z-UCKqz5Js-101kS?usp=drive_link">Download</a>
+        </div>
+      </div>
+      <img src="../img/adocao.png" alt="Imagem de adoção de animais" />
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <p>&copy; PARAÍSO PATINHAS</p>
+  </footer>
+
+  <!-- Chatbot Flutuante -->
+  <style>
+    #chat-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: lightgreen;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    
+    #chat-box {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background: white;
+      border: 3px solid lightgreen;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    
+    #chat-header {
+      background: black;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    #chat-output {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    
+    #chat-input {
+      width: 68%;
+      border: none;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      font-size: 14px;
+    }
+    
+    #chat-box button {
+      width: 32%;
+      border: none;
+      padding: 10px;
+      background: lightgreen;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }  
+  </style>
+
+  <div id="chat-icon" onclick="toggleChat()">🐾</div>
+
+  <div id="chat-box">
+    <div id="chat-header">Atendimento PetShop</div>
+    <div id="chat-output"></div>
+    <div style="display: flex;">
+      <input type="text" id="chat-input" placeholder="Digite sua pergunta..." onkeypress="handleKeyPress(event)" />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chat = document.getElementById("chat-box");
+      chat.style.display = (chat.style.display === "flex") ? "none" : "flex";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const message = input.value.trim();
+      if (!message) return;
+
+      document.getElementById("chat-output").innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
+      input.value = "";
+
+      fetch("https://paraiso-patinhas.onrender.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("chat-output").innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+        document.getElementById("chat-output").scrollTop = document.getElementById("chat-output").scrollHeight;
+      })
+      .catch(err => {
+        document.getElementById("chat-output").innerHTML += `<p><strong>Bot:</strong> Erro ao conectar com o servidor.</p>`;
+      });
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    }
+  </script>
+
+</body>
+</html>
