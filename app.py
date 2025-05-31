@@ -47,5 +47,7 @@ def chat():
         print(f"Erro: {e}")
         return jsonify({"response": "Desculpe, houve um erro ao tentar responder. Tente novamente mais tarde."})
 
+# 🚀 Corrigido para funcionar no Render:
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
