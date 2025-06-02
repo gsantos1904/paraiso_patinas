@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre - Paraíso Patinhas</title>
+  <link rel="stylesheet" href="../static/style.css" />
+  <style>
+    .sobre-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      background-color: white;
+    }
+
+    .sobre-container h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: lightgreen;
+      margin-bottom: 20px;
+    }
+
+    .sobre-container p {
+      text-align: justify;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: black;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="/static/img/Logo-removebg-preview__1_-removebg-preview.png" alt="Logo Paraíso Patinhas" />
+      </a>
+      <h1><a href="index.html">PARAÍSO PATINHAS</a></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="sobre-container">
+    <h1>Sobre a Instituição</h1>
+    <p>
+      O Paraíso Patinhas é uma organização sem fins lucrativos dedicada ao resgate, cuidado e adoção de animais em situação de abandono ou maus-tratos.
+      Desde a nossa fundação, temos acolhido centenas de cães e gatos, oferecendo abrigo, cuidados veterinários, amor e a chance de um novo lar.
+      Nosso trabalho é sustentado por doações, voluntários apaixonados e parcerias com clínicas e empresas comprometidas com o bem-estar animal.
+    </p>
+
+    <div class="cards-container">
+      <div class="card">
+        <img src="/static/img/pet1.jpg" alt="Pet 1">
+        <div class="card-content">
+          <h3>Mel</h3>
+          <p>Brincalhona, dócil e pronta para adoção!</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/static/img/pet2.jpg" alt="Pet 2">
+        <div class="card-content">
+          <h3>Thor</h3>
+          <p>Um companheiro leal à procura de um lar amoroso.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/static/img/pet3.jpg" alt="Pet 3">
+        <div class="card-content">
+          <h3>Luna</h3>
+          <p>Ela adora colo e está pronta para adoção responsável.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; PARAÍSO PATINHAS</p>
+  </footer>
+
+</body>
+</html>
