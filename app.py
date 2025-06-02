@@ -13,6 +13,10 @@ API_URL = "https://openrouter.ai/api/v1/chat/completions"
 def index():
     return render_template("index.html")
 
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
