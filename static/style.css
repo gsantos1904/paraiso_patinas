@@ -117,9 +117,9 @@ header nav ul li a:hover {
   transition: background-color 0.3s ease;
 }
 
-.caixa_button:hover {
+#caixa_button:hover {
   background-color: lightgreen;
-  color: white !important;
+  color: white;
   text-decoration: none;
 }
 
