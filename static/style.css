@@ -119,6 +119,8 @@ header nav ul li a:hover {
 
 .caixa_button:hover {
   background-color: lightgreen;
+  color: white !important;
+  text-decoration: none;
 }
 
 /* Footer */
