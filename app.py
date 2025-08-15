@@ -28,7 +28,7 @@ def chat():
     }
 
     payload = {
-        "model": "nousresearch/deephermes-3-mistral-24b-preview:free",
+        "model": "deepseek/deepseek-r1:free",
         "messages": [
             {
                 "role": "system",
