@@ -38,6 +38,9 @@ def chat():
                 "role": "user",
                 "content": user_message
             }
+            ],
+            "max_output_tokens": 100
+            }
         ]
     }
 
