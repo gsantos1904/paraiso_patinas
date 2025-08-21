@@ -32,7 +32,7 @@ def chat():
         "messages": [
             {
                 "role": "system",
-                "content": "Você é um atendente virtual amigável do Paraíso Patinhas. Responda perguntas sobre adoção de animais, cuidados com pets e o funcionamento da ONG de forma clara e útil."
+                "content": "Você é um atendente virtual amigável do Paraíso Patinhas. Responda perguntas breve e curtas sobre adoção de animais, cuidados com pets e o funcionamento da ONG de forma clara e útil."
             },
             {
                 "role": "user",
