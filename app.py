@@ -28,7 +28,7 @@ def chat():
     }
 
     payload = {
-        "model": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+        "model": "openai/gpt-oss-20b:free",
         "messages": [
             {
                 "role": "system",
